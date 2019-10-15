@@ -1,7 +1,8 @@
 ---
 layout: post
 title: MongoDb seeding in Docker
-tags: MongoDb,Docker
+tags: 'MongoDb,Docker'
+published: true
 ---
 
 For my last project I have been tinkering with Docker a lot, and one of the tasks I wanted to accomplish was to have a MongoDb instance in docker get seeded with data and users, as soon as the instance is created.
@@ -24,7 +25,14 @@ So I created a `01.Seed.sh` and a `02.Users.sh` files that will in turn seed the
 
 My Seed file uses `mongoImport` to seed the database:
 ```sh
-mongoimport --authenticationDatabase=admin --username=$MONGO_INITDB_ROOT_USERNAME --password=$MONGO_INITDB_ROOT_PASSWORD --mode upsert --host 127.0.0.1 --db MyDatabase --collection MyCollection /docker-entrypoint-initdb.d/myDb_MyCollection_Data.json
+mongoimport --authenticationDatabase=admin \
+   --username=$MONGO_INITDB_ROOT_USERNAME \
+   --password=$MONGO_INITDB_ROOT_PASSWORD \
+   --mode upsert \
+   --host 127.0.0.1 \
+   --db MyDatabase \
+   --collection MyCollection \
+   /docker-entrypoint-initdb.d/myDb_MyCollection_Data.json
 ```
 
 In this script I am passing the env vars I mentioned before to actually gain admin access and do the database seeding.
@@ -40,8 +48,8 @@ set -e
 mongo <<EOF
 use admin
 db.createUser({
-  user:  '$LOCKED_USERNAME',
-  pwd: '$LOCKED_PASSWORD',
+  user: '$LOCKED_USERNAME',
+  pwd:  '$LOCKED_PASSWORD',
   roles: [
      { role: 'readWrite', db: 'myDb' },
      { role: 'readWrite', db: 'OtherDb' }]
@@ -50,4 +58,3 @@ EOF
 ```
 
 This file will take a couple env. vars that I can pass along to the docker-compose file when I need to create the database; in fact I can eventually run this script only if the env. vars are set, that way I can limit the times the script gets run.
-
