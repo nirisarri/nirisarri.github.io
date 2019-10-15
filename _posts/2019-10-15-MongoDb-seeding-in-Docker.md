@@ -3,6 +3,7 @@ layout: post
 title: MongoDb seeding in Docker
 tags:
   - MongoDb
+  - Docker
 published: true
 date: '2019-10-15'
 ---
