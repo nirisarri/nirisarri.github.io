@@ -1,10 +1,10 @@
 # --- General options --- #
 
 # Name of website
-title: My website
+title: Nic's Blog
 
 # Short description of your site
-description: A virtual proof that I'm awesome
+description: My name is Nicolas De Irisarri. I am a Software engineer in Minnesota, USA. My main interests are Software development, IT strategy and Technology in general.
 
 # --- Local development options ---
 # If your website is hosted locally rather than on GitHub, then you need to uncomment the next two parameters to set the url and baseurl
@@ -24,11 +24,11 @@ navbar-links:
   Resources:
     - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
     - Learn markdown: "http://www.markdowntutorial.com/"
-  Author's home: "http://deanattali.com"
+  Author's home: "http://nirisarri.com"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/img/avatar-icon.png"
+avatar: "/img/nicolas.jpg"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
@@ -69,15 +69,15 @@ author:
 social-network-links:
   rss: true
   email: "someone@example.com"
-  facebook: deanattali
-  github: daattali
-  twitter: daattali
+  facebook: nirisarri
+  github: nirisarri
+  twitter: nirisarri
 #  reddit: yourname
-#  linkedin: daattali
+  linkedin: nirisarri
 #  xing: yourname
-#  stackoverflow: "3943160/daattali"
+  stackoverflow: "69920/nirisarri"
 #  snapchat: deanat78
-#  instagram: deanat78
+  instagram: deanat78
 #  youtube: user/deanat78
 #  spotify: yourname
 #  telephone: +14159998888
@@ -90,10 +90,10 @@ share-links-active:
   twitter: true
   facebook: true
   linkedin: true
-
+  stackoverflow: true
 # How to display the link to the website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"  # eg. "deanattali.com/beautiful-jekyll"
+url-pretty: "nirisarri.com"  # eg. "deanattali.com/beautiful-jekyll"
 
 # --- Web Statistics Section --- #
 
