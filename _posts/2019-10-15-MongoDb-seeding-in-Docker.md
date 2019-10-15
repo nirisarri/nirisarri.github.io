@@ -37,7 +37,7 @@ My Users file looks like this:
 #!/bin/bash
 set -e
 
-mongo <
+mongo <<EOF
 use admin
 db.createUser({
   user:  '$LOCKED_USERNAME',
