@@ -3,6 +3,7 @@ layout: post
 title: MongoDb seeding in Docker
 tags: 'MongoDb,Docker'
 published: true
+date: '2019-10-15'
 ---
 
 For my last project I have been tinkering with Docker a lot, and one of the tasks I wanted to accomplish was to have a MongoDb instance in docker get seeded with data and users, as soon as the instance is created.
