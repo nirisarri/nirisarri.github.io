@@ -1,13 +1,14 @@
 ---
 layout: post
 title: MongoDb seeding in Docker
+tags: MongoDb,Docker
 ---
 
 For my last project I have been tinkering with Docker a lot, and one of the tasks I wanted to accomplish was to have a MongoDb instance in docker get seeded with data and users, as soon as the instance is created.
 
 I have been trying several strategies. My first approach was the most naive one: after constructing the container, run manually a shell script that populated the database and created the users. It works fine, I guess. but is a manual process and is a step you must remember to run... also when moving to prod environments will not work: 
 
->## *_You should never have Read/Write access into prod!_*
+>## *You should never have Read/Write access into prod!*
 
 The second approach I took was to create a separate container that would execute the seeding script. This worked better, as the deployment would create the container; and within this container I can execute shell scripts that do `mongoImport` or mongo queries against the database. Seeding container lingers in the application and eventually needs to be manually removed, and this was the only  drawback I found... or so I thought.
 
