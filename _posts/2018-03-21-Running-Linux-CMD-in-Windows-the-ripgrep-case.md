@@ -1,7 +1,11 @@
 ---
 layout: post
 published: true
-title: Untitled
+title: Running Linux CMD in Windows - the RipGrep Case
+date: 2018-03-21
+tags:
+  - WSL
+  - Linux
 ---
 Not a new thing, lots of posts there about it..
 I have been trying to get it to a nice point, and I think I have been able to.
