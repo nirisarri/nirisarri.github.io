@@ -3,7 +3,10 @@ layout: post
 published: true
 title: Running Linux CMD in Windows - the webpack Case
 date: '2018-03-21'
-Tags: WSL
+tags: 
+  - WSL
+  - linux
+  - cli
 ---
 So I am learning now that consistency is key: I was working on a Single Page Application (SPA)  project in windows, but running the tooling (npm, webpack, etc.) from WSL, just because I think the Linux native commands work better from Linux.
 
