@@ -8,7 +8,10 @@ tags:
   - Docker
   - WSL
 ---
-In my last project, the UI team decided not to host its angular app in Docker... ![]({{site.baseurl}}/https://media.giphy.com/media/d4zHnLjdy48Cc/giphy.gif).
+In my last project, the UI team decided not to host its angular app in Docker...
+
+![](https://media.giphy.com/media/d4zHnLjdy48Cc/giphy.gif)
+
 I started looking into it, as proabbly for other projects this will be necessary.
 ### Things I need to have:
 1. Not need to rebuild the world every time. `npm i` usually takes too long.
