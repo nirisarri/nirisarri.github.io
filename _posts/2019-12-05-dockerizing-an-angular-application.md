@@ -4,7 +4,7 @@ published: true
 title: Dockerizing an angular application
 date: '2019-12-05'
 ---
-In my last project, the UI team decided not to host its angular app in Docker... Challenge Accepted!!!.
+In my last project, the UI team decided not to host its angular app in Docker... ![]({{site.baseurl}}/https://media.giphy.com/media/d4zHnLjdy48Cc/giphy.gif).
 I started looking into it, as proabbly for other projects this will be necessary.
 ### Things I need to have:
 1. Not need to rebuild the world every time. `npm i` usually takes too long.
@@ -85,7 +85,7 @@ So, I found a couple of github issues that state that this is a docker for windo
 This is a bummer.
 But wait! I have a WSL2 ubuntu on windows distro!! (pretty awesome I must say). I also installed the latest Docker for windows that will use WSL2 instead of a hyper-V VM So, I copy the project into my linux box and rebuild everyting from bash and do docker-compose build && docker-compose up... then I modify the files in my linux ( use code remote WSL to do that) and VOILA! 😎 changes in my code get tracked down in my container and the code is rebuilt! So I can *sorta* check #2 as well, and #3 from nice-to-have!
 
-I will try to get the other 2 mmissing points and will post my results..
+I will try to get the other 2 mmissing points and will post my results.
 
 
 
