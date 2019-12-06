@@ -7,15 +7,15 @@ date: '2019-12-05'
 In my last project, the UI team decided not to host its angular app in Docker... Challenge Accepted!!!.
 I started looking into it, as proabbly for other projects this will be necessary.
 ### Things I need to have:
-- Not need to rebuild the world every time. `npm i` usually takes too long.
-- Be able to edit code and see it changed in the browser.
-- Hit my APIs seamlessly. bonus point if I dont need to change my env, as I want to have a really easy to set up dev environment
-- be able to access my app from my localhost, and my local browsers
+1. Not need to rebuild the world every time. `npm i` usually takes too long.
+1. Be able to edit code and see it changed in the browser.
+1. Hit my APIs seamlessly. bonus point if I dont need to change my env, as I want to have a really easy to set up dev environment
+1. be able to access my app from my localhost, and my local browsers
 
 ### Nice things to have
-- Run unit tests inside the container (or separate container) unsig `ng test`.
-- Have a deployment Container with the angular AOT compilation.
-- Multi-platform (win, mac, linux)
+1. Run unit tests inside the container (or separate container) unsig `ng test`.
+1. Have a deployment Container with the angular AOT compilation.
+1. Multi-platform (win, mac, linux)
 
 ------------
 ## The proposed solution
@@ -47,7 +47,8 @@ I am starting with a node 12 docker container, then I set my work dir to `myApp`
 
 Then I copy the packake.json file to the container, in the myApp dir and run npm install to install first the angular CLI and then the app dependencies. I do this here so I can take advantage of cache.
 
-Then I copy all the content of myApp to the /myApp directory, and run the `serve` command establishing the host as `0.0.0.0`, otherwise it would be localhost, and I don't think this would work when I expose the ports...
+Then I copy all the content of myApp to the /myApp directory, and run the `serve` command establishing the host as `0.0.0.0`, otherwise it would be localhost, and I don't think this would work when I expose the ports.
+I also add the `--watch=true` flag so changes in the code will trigger new angular build. This will allow me to see real soon in the browser changes that I make in the code, without triggering container build. (more on this later)
 
 I set the .dockerignore with the node_modules and .git so they don't make their way to the container.
 
@@ -59,7 +60,7 @@ volumes:
   node_modules:
 
 services:
-  bmt-ui:
+  ui:
     image: ${DOCKER_REGISTRY}ng
     build:
       context: ./
@@ -67,9 +68,24 @@ services:
     ports:
       - 4200:4200
     volumes:
-      - ./src:/bmt-ui/src
-      - node_modules:/bmt-ui/node_modules
+      - ./src:/myApp/src
+      - node_modules:/myApp/node_modules
 ```
+
+First I establish an anonymous voluem where the node_modules will be stored. I do this so when recreating the container I don't lose them.
+Then in the services, I establish the image name, the Dockerfile to use, expose the 4200 port and set the volumes I will use:
+- The first one will map my src dir to the containers src dir, so I dont need to change the files inside the container, I can do that from the exterior.
+-  The second maps the `node_modules` to the anonymous volume so they get persisted when the container stops.
+
+## The results
+Well... mixed results: the container gets created, and the node modules installed alright; the app gets built and server fine. I can check  1, 3 and 4, but 2 is not working... I edit my file and the container does not see it changed 😒...
+
+### More investigation
+So, I found a couple of github issues that state that this is a docker for windows  [known issue](https://github.com/moby/moby/issues/30105). 
+This is a bummer.
+But wait! I have a WSL2 ubuntu on windows distro!! (pretty awesome I must say). I also installed the latest Docker for windows that will use WSL2 instead of a hyper-V VM So, I copy the project into my linux box and rebuild everyting from bash and do docker-compose build && docker-compose up... then I modify the files in my linux ( use code remote WSL to do that) and VOILA! 😎 changes in my code get tracked down in my container and the code is rebuilt! So I can *sorta* check #2 as well, and #3 from nice-to-have!
+
+I will try to get the other 2 mmissing points and will post my results..
 
 
 
