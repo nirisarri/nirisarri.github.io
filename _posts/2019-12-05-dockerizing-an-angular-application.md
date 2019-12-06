@@ -91,7 +91,7 @@ Well... mixed results: the container gets created, and the node modules installe
 So, I found a couple of github issues that state that this is a docker for windows  [known issue](https://github.com/moby/moby/issues/30105). 
 This is a bummer.
 But wait! I have a WSL2 Ubuntu on windows distro!! (pretty awesome I must say). I also installed the latest edge Docker for windows that will use WSL2 instead of a hyper-V VM So, I copy the project into my Linux instance and rebuild everything from bash and do `docker-compose build && docker-compose up`... then I modify the files in my Linux (use VS code remote WSL to do that) and VOILA! 😎 changes in my code get tracked down in my container and the code is rebuilt! So I can *sorta* check #2 as well, and #3 from nice-to-have!
-I know this i comes with a big payload, as you need
+I know this comes with a big payload, as you need
 - Windows 10 Insiders (slow ring)
 - WSL upgraded to V2
 - Docker Edge Channel, with the experimental `Docker for WSL2 Engine` turned on.
