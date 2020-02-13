@@ -30,6 +30,7 @@ In order to have your instance running we need to perform  the following steps. 
 
 1. Ensure Hyper-V is running (windows Only)
 2. Create an ubuntu VM
+1. Install KVM2
 3. install Kubectl
 4. install minikube
 5. configure minikube
