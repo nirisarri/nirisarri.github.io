@@ -3,6 +3,10 @@ layout: post
 published: false
 title: Install and run Minikube on a Virtual machine
 date: '2020-02-12'
+tags:
+  - Kubernetes
+  - Minikube
+  - Hyper-V
 ---
 *It is a fact: Kubernetes won*.  
 
