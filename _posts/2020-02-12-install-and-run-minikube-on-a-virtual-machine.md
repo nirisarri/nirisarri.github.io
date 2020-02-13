@@ -30,9 +30,42 @@ In order to have your instance running we need to perform  the following steps. 
 
 1. Ensure Hyper-V is running (windows Only)
 2. Create an ubuntu VM
-1. Install KVM2
-3. install Kubectl
-4. install minikube
-5. configure minikube
+3. Install KVM2
+4. install Kubectl
+5. install minikube
+6. configure minikube
 
 Lets take a look at each part:
+
+### Install Hyper-V on Windows 10
+
+Reference the article [Install Hyper-V On Windows 10](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). 
+
+As I mentioned before, the base platform I will be using is Microsoft's Hyper-V. You need windows 10 Enterprise, pro or Education in order to install and run Hyper-V. Of course you can do it on windows Server, but I will be focusiong on Win10.
+
+1. Ensure your BIOS has Virtualization enabled. THis is different for every manufacturer. Check with yours.
+2. Open a powerShell console as administrator
+3. run 
+
+```
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+4. when completed, reboot.
+
+This should install the HyperV Manager console, where you can create virtual machines.
+
+### Create an Ubuntu 18 Virtual Machine
+
+I am still looking for a way to create it using powerShell, but here is the method using the Hyper-V Manager.
+
+1. in the hyperv manager, create an external virtual switch by
+
+  - Click on Virtual Switch Manager
+  - In _what type of virtual switch do you want to create_ Select **external** and click on **Create Virtual Switch**.
+  - In **name** put something memorable, for example `minikube-switch`.
+  - in **External Network** select an active external network card you want to use for your VM. 
+
+> **NOTE:** This has an issue: lets say you select a wired adapter and you connect then on other place through wireless, then your VM will be disconnected. You have to keep this in mind, and adjust depending on your environment. If you have a better idea on how to be able to have internet connection and at the same time access to the internal ports of the VM from the host, please drop me a line 😊) 
+
+- 
