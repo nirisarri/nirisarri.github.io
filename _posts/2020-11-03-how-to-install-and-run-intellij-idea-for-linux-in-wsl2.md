@@ -13,7 +13,7 @@ Well, after talking to friends and reading a bunch of blog posts, I figured it i
 
 1. Make sure you have the right version of windows to run WSL, which is Windows 10 Version 1607 (Anniversary Update) you can run `> winver` in a console to verify that ( will use > for commands that need to be run in PowerShell or windows Cmd)
 
-2.  Look at this article to install and configure WSL2 : https://docs.microsoft.com/en-us/windows/wsl/install-win10 and download and install Ubuntu 18.04 LTS.
+2.  Look at [this article](https://docs.microsoft.com/en-us/windows/wsl/install-win10) to install and configure WSL2 and download and install Ubuntu 18.04 LTS.
 
 3. In your windows, install an X Server. 
 
