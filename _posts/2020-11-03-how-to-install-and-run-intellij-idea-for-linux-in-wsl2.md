@@ -2,6 +2,11 @@
 layout: post
 published: true
 title: How to install and run IntelliJ Idea for Linux in WSL2
+date: '2020-11-03'
+tags:
+  - Java
+  - WSL
+  - IntelliJ
 ---
 I am new to Java development, I really want to understand the platform and as close as I can to the environment apps would actually run, that means Linux, Docker, Kubernetes, etc.
 
